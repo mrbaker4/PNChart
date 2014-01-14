@@ -129,6 +129,7 @@
 
         PNCircleChart * circleChart = [[PNCircleChart alloc] initWithFrame:CGRectMake(0, 80.0, SCREEN_WIDTH, 100.0) count:[NSNumber numberWithInt:100] ofTotal:[NSNumber numberWithInt:60]];
         circleChart.backgroundColor = [UIColor clearColor];
+        [circleChart setTitleCount:@"100"];
         [circleChart setStrokeColor:PNGreen];
         [circleChart strokeChart];
 

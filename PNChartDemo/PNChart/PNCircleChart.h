@@ -17,13 +17,13 @@
 -(void)strokeChart;
 - (instancetype)initWithFrame:(CGRect)frame count:(NSNumber *)count ofTotal:(NSNumber *)total;
 
-@property (nonatomic, strong) UIColor * strokeColor;
-@property (nonatomic, strong) NSNumber * total;
-@property (nonatomic, strong) NSNumber * count;
-@property (nonatomic, strong) NSNumber * lineWidth;
-@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) UIColor *strokeColor;
+@property (nonatomic, strong) NSNumber *total;
+@property (nonatomic, strong) NSNumber *count;
+@property (nonatomic, strong) NSNumber *lineWidth;
+@property (nonatomic, strong) NSString *titleCount;
 
-@property(nonatomic,strong) CAShapeLayer * circle;
-@property(nonatomic,strong) CAShapeLayer * circleBG;
+@property(nonatomic,strong) CAShapeLayer *circle;
+@property(nonatomic,strong) CAShapeLayer *circleBG;
 
 @end

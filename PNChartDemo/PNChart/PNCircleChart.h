@@ -15,12 +15,13 @@
 @interface PNCircleChart : UIView
 
 -(void)strokeChart;
-- (id)initWithFrame:(CGRect)frame andTotal:(NSNumber *)total andCurrent:(NSNumber *)current;
+- (instancetype)initWithFrame:(CGRect)frame count:(NSNumber *)count ofTotal:(NSNumber *)total;
 
 @property (nonatomic, strong) UIColor * strokeColor;
 @property (nonatomic, strong) NSNumber * total;
-@property (nonatomic, strong) NSNumber * current;
+@property (nonatomic, strong) NSNumber * count;
 @property (nonatomic, strong) NSNumber * lineWidth;
+@property (nonatomic, strong) NSString *title;
 
 @property(nonatomic,strong) CAShapeLayer * circle;
 @property(nonatomic,strong) CAShapeLayer * circleBG;

@@ -11,15 +11,19 @@
 
 @implementation PNCircleChart
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    return [self initWithFrame:frame count:@0 ofTotal:@0];
+}
 
-- (id)initWithFrame:(CGRect)frame andTotal:(NSNumber *)total andCurrent:(NSNumber *)current
-{
+
+- (instancetype)initWithFrame:(CGRect)frame count:(NSNumber *)count ofTotal:(NSNumber *)total {
     self = [super initWithFrame:frame];
     
     if (self) {
         _total = total;
-        _current = current;
+        _count = count;
         _strokeColor = PNFreshGreen;
+        self.title = @"";
         
         _lineWidth = [NSNumber numberWithFloat:8.0];
         UIBezierPath* circlePath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.center.x,self.center.y) radius:self.frame.size.height*0.5 startAngle:DEGREES_TO_RADIANS(270) endAngle:DEGREES_TO_RADIANS(270.01) clockwise:NO];
@@ -53,15 +57,12 @@
 {
     //Add count label
     
-    UICountingLabel *gradeLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(0, 0, 50.0, 50.0)];
+    UILabel *gradeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50.0, 50.0)];
     [gradeLabel setTextAlignment:NSTextAlignmentCenter];
     [gradeLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
-    [gradeLabel setTextColor: PNDeepGrey];
+    [gradeLabel setTextColor:[UIColor whiteColor]];
     [gradeLabel setCenter:CGPointMake(self.center.x,self.center.y)];
-    gradeLabel.method = UILabelCountingMethodEaseInOut;
-    gradeLabel.format = @"%d%%";
-   
-    
+    [gradeLabel setText:self.title];
     [self addSubview:gradeLabel];
     
     //Add circle params
@@ -76,12 +77,9 @@
     pathAnimation.duration = 1.0;
     pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
-    pathAnimation.toValue = [NSNumber numberWithFloat:[_current floatValue]/[_total floatValue]];
+    pathAnimation.toValue = [NSNumber numberWithFloat:[_count floatValue]/[_total floatValue]];
     [_circle addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
-    _circle.strokeEnd   = [_current floatValue]/[_total floatValue];
-    
-    [gradeLabel countFrom:0 to:[_current floatValue]/[_total floatValue]*100 withDuration:1.0];
-   
+    _circle.strokeEnd   = [_count floatValue]/[_total floatValue];
 }
 
 @end
